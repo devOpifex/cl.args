@@ -21,5 +21,8 @@ cl <- cl.make()
 
 n <- cl$int("n", 1, "An integer")
 name <- cl$str("name", "Bob", "A name")
+
+erratum::resolve(n)
+erratum::resolve(m)
 ```
 
