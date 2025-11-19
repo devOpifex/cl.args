@@ -31,3 +31,5 @@ erratum::resolve(n)
 erratum::resolve(m)
 ```
 
+Which you can then call like `Rscript script.R -n 10 -name "Alice"` or `Rscript script.R -help`.
+
