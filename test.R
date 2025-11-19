@@ -7,6 +7,7 @@ name <- cl$str("name", "Bob", "A name")
 
 if ("-help" %in% commandArgs(trailingOnly = TRUE)) {
   cl$help()
+  quit(save = "no")
 }
 
 erratum::resolve(n)

@@ -35,7 +35,7 @@ cl.make <- function(args = commandArgs(trailingOnly = TRUE)) {
     },
     bool = \(name, default, description) {
       accepted <<- add_arg(accepted, name, default, description, type = "bool")
-      parse_arg(args, default, name, as.logical)
+      sprintf("-%s", name) %in% args
     },
     num = \(name, default, description) {
       accepted <<- add_arg(accepted, name, default, description, type = "num")
