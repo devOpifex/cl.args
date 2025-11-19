@@ -5,13 +5,12 @@ cl <- cl.make()
 n <- cl$int("n", 1, "An integer")
 name <- cl$str("name", "Bob", "A name")
 
-if (erratum::is.e(n)) {
-  erratum::raise(n)
+if ("-help" %in% commandArgs(trailingOnly = TRUE)) {
+  cl$help()
 }
 
-if (erratum::is.e(name)) {
-  erratum::raise(m)
-}
+erratum::resolve(n)
+erratum::resolve(name)
 
 cat(
   "n =",
