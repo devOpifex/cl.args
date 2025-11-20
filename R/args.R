@@ -4,24 +4,7 @@
 #'
 #' @return A list of functions that parse arguments
 #' @export
-#'
-#' @examples
-#' cl <- cl.make()
-#'
-#' n <- cl$int("n", 1, "An integer")
-#' name <- cl$str("name", "Bob", "A name")
-#'
-#' erratum::resolve(n)
-#' erratum::resolve(m)
-#'
-#' cat(
-#'   "n =",
-#'   n,
-#'   "name =",
-#'   name,
-#'   "\n"
-#' )
-cl.make <- function(args = commandArgs(trailingOnly = TRUE)) {
+cl.make <- function(args = commandArgs()) {
   accepted <- list()
 
   list(
@@ -42,7 +25,12 @@ cl.make <- function(args = commandArgs(trailingOnly = TRUE)) {
       parse_arg(args, default, name, as.numeric)
     },
     help = \() {
+      if (!"-help" %in% args) {
+        return(invisible())
+      }
+
       cat("Usage:\n")
+
       for (arg in accepted) {
         cat(
           sprintf(
@@ -53,17 +41,24 @@ cl.make <- function(args = commandArgs(trailingOnly = TRUE)) {
           )
         )
       }
+
+      quit("no")
     }
   ) |>
     invisible()
 }
 
 parse_arg <- function(args, default, name, converter) {
-  name <- paste0("-", name)
-  name_index <- which(name %in% args)
+  name <- paste0("^-", name)
+  name_index <- grep(name, args)
 
-  if (length(name_index) == 0) {
+  if (!any(name_index)) {
     return(default)
+  }
+
+  if (grepl("=", args[name_index])) {
+    split <- strsplit(args[name_index], "=")[[1]]
+    return(converter(split[2]))
   }
 
   value_index <- name_index + 1
