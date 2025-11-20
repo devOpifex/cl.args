@@ -15,6 +15,7 @@ pak::pak("devOpifex/cl.args")
 ## Example
 
 ``` r
+#!/usr/bin/Rscript
 library(cl.args)
 
 cl <- cl.make()
@@ -31,5 +32,5 @@ erratum::resolve(n)
 erratum::resolve(m)
 ```
 
-Which you can then call like `Rscript script.R -n 10 -name "Alice"` or `Rscript script.R -help`.
+Which you can then call like `./script.R`, `Rscript script.R -n 10 -name "Alice"` or `Rscript script.R -help`.
 

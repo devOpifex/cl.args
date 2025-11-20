@@ -1,3 +1,4 @@
+#!/usr/bin/Rscript
 devtools::load_all()
 
 cl <- cl.make()
