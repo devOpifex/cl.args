@@ -18,7 +18,10 @@ pak::pak("devOpifex/cl.args")
 #!/usr/bin/Rscript
 library(cl.args)
 
-cl <- cl.make()
+cl <- cl.make(
+  name = "Test",
+  version = "1.0.0"
+)
 
 name <- cl$str("name", "Bob", "A name")
 n <- cl$int(

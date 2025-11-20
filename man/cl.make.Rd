@@ -4,9 +4,13 @@
 \alias{cl.make}
 \title{Make a command line argument parser}
 \usage{
-cl.make(args = commandArgs())
+cl.make(name, version, args = commandArgs())
 }
 \arguments{
+\item{name}{The name of the interface}
+
+\item{version}{The version of the interface}
+
 \item{args}{A vector of command line arguments}
 }
 \value{

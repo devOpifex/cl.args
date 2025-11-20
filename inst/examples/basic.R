@@ -1,7 +1,7 @@
 #!/usr/bin/Rscript
 devtools::load_all()
 
-cl <- cl.make()
+cl <- cl.make("Namer", "1.0.0")
 
 age <- cl$int("age", 42L, "An integer")
 name <- cl$str("name", "Bob", "A name")

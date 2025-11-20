@@ -1,10 +1,20 @@
 #' Make a command line argument parser
 #'
+#' @param name The name of the interface
+#' @param version The version of the interface
 #' @param args A vector of command line arguments
 #'
 #' @return A list of functions that parse arguments
 #' @export
-cl.make <- function(args = commandArgs()) {
+cl.make <- function(name, version, args = commandArgs()) {
+  if (missing(name)) {
+    stop("You must provide a name for the interface")
+  }
+
+  if (missing(version)) {
+    stop("You must provide a version for the interface")
+  }
+
   accepted <- list()
 
   list(
@@ -29,7 +39,7 @@ cl.make <- function(args = commandArgs()) {
         return(invisible())
       }
 
-      cat("Usage:\n")
+      cat(sprintf("Usage %s %s:\n", name, version))
 
       for (arg in accepted) {
         cat(
