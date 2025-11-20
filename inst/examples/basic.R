@@ -1,5 +1,5 @@
 #!/usr/bin/Rscript
-devtools::load_all()
+library(cl.args)
 
 cl <- cl.make("Namer", "1.0.0")
 
