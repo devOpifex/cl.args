@@ -3,7 +3,7 @@ devtools::load_all()
 
 cl <- cl.make()
 
-n <- cl$int("n", 1, "An integer")
+n <- cl$int("n", 42, "An age")
 name <- cl$str("name", "Bob", "A name")
 
 if ("-help" %in% commandArgs(trailingOnly = TRUE)) {
@@ -14,10 +14,4 @@ if ("-help" %in% commandArgs(trailingOnly = TRUE)) {
 erratum::resolve(n)
 erratum::resolve(name)
 
-cat(
-  "n =",
-  n,
-  "name =",
-  name,
-  "\n"
-)
+cat(sprintf("Hello %s, you are %d years old.\n", name, n))

@@ -20,8 +20,12 @@ library(cl.args)
 
 cl <- cl.make()
 
-n <- cl$int("n", 1, "An integer")
 name <- cl$str("name", "Bob", "A name")
+n <- cl$int(
+  name = "n",
+  default = 42, 
+  description = "An age"
+)
 
 if ("-help" %in% commandArgs(trailingOnly = TRUE)) {
   cl$help()
@@ -30,7 +34,9 @@ if ("-help" %in% commandArgs(trailingOnly = TRUE)) {
 
 erratum::resolve(n)
 erratum::resolve(m)
+
+cat(sprintf("Hello %s, you are %d years old.\n", name, n))
 ```
 
-Which you can then call like `./script.R`, `Rscript script.R -n 10 -name "Alice"` or `Rscript script.R -help`.
+Which you can then call like `./script.R`, `./script.R -n 10 -name "Alice"` or `./script.R -help`.
 
