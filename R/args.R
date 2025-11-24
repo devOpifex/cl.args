@@ -34,7 +34,7 @@ cl.make <- function(name, version, args = commandArgs()) {
       accepted <<- add_arg(accepted, name, default, description, type = "num")
       parse_arg(args, default, name, as.numeric)
     },
-    help = \() {
+    help = \(...) {
       if (!"-help" %in% args) {
         return(invisible())
       }
@@ -48,7 +48,8 @@ cl.make <- function(name, version, args = commandArgs()) {
             arg$name,
             arg$type,
             arg$description
-          )
+          ),
+          ...
         )
       }
 
